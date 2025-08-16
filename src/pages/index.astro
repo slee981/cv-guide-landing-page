@@ -1,11 +1,499 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="container">
+				<div class="hero-content">
+					<div class="badge">Coming Soon</div>
+					<h1>Find Your Perfect Job Match</h1>
+					<p class="hero-description">
+						AI-powered job matching that goes beyond resumes and buzzword-filled job descriptions. 
+						Find roles that truly fit your complete professional story and personality.
+					</p>
+					<div class="email-signup">
+						<input type="email" placeholder="Enter your email for early access" />
+						<button type="submit">Get Early Access</button>
+					</div>
+					<p class="signup-note">Join the waitlist to be first to experience the future of hiring</p>
+				</div>
+				<div class="hero-image">
+					<div class="image-placeholder">
+						<!-- Hero illustration placeholder -->
+						<p>Hero Image Placeholder<br/>AI + Job Matching Visual</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Problem Section -->
+		<section class="problem">
+			<div class="container">
+				<h2>The Problem with Hiring Today</h2>
+				<div class="problem-grid">
+					<div class="problem-item">
+						<div class="icon-placeholder">📄</div>
+						<h3>Outdated Resumes</h3>
+						<p>One-page snapshots can't capture your full professional story, skills, and potential.</p>
+					</div>
+					<div class="problem-item">
+						<div class="icon-placeholder">🔍</div>
+						<h3>Keyword Matching</h3>
+						<p>Current systems match buzzwords, not actual fit for the role and team dynamics.</p>
+					</div>
+					<div class="problem-item">
+						<div class="icon-placeholder">📋</div>
+						<h3>Generic Job Descriptions</h3>
+						<p>Most job posts focus on HR requirements, not what you'll actually do day-to-day.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Solution Section -->
+		<section class="solution">
+			<div class="container">
+				<h2>Our Solution: Deep AI-Powered Matching</h2>
+				<p class="solution-intro">
+					We use advanced AI to understand the complete picture - your full professional journey, 
+					personality, and work style, matched against what roles actually entail and team cultures.
+				</p>
+				<div class="solution-image">
+					<div class="image-placeholder">
+						<p>Solution Diagram Placeholder<br/>AI Analysis Process Visual</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- How It Works Section -->
+		<section class="how-it-works">
+			<div class="container">
+				<h2>How It Works</h2>
+				<div class="audience-tabs">
+					<div class="tab-content">
+						<h3>For Job Seekers</h3>
+						<div class="steps">
+							<div class="step">
+								<div class="step-number">1</div>
+								<div class="step-content">
+									<h4>Complete Your Profile</h4>
+									<p>Share your full professional story - work history, projects, education, and personality insights.</p>
+								</div>
+							</div>
+							<div class="step">
+								<div class="step-number">2</div>
+								<div class="step-content">
+									<h4>AI Analysis</h4>
+									<p>Our AI understands your strengths, work style, and career aspirations beyond keywords.</p>
+								</div>
+							</div>
+							<div class="step">
+								<div class="step-number">3</div>
+								<div class="step-content">
+									<h4>Perfect Matches</h4>
+									<p>Get matched with roles where you'll thrive, complete with real day-to-day expectations.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-content">
+						<h3>For Companies</h3>
+						<div class="steps">
+							<div class="step">
+								<div class="step-number">1</div>
+								<div class="step-content">
+									<h4>Job Discovery Chat</h4>
+									<p>Work with our AI to define what the role really involves and your team culture.</p>
+								</div>
+							</div>
+							<div class="step">
+								<div class="step-number">2</div>
+								<div class="step-content">
+									<h4>Deep Understanding</h4>
+									<p>AI maps your actual needs, work environment, and team dynamics.</p>
+								</div>
+							</div>
+							<div class="step">
+								<div class="step-number">3</div>
+								<div class="step-content">
+									<h4>Ideal Candidates</h4>
+									<p>Find people who will excel in your specific role and company culture.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Coming Soon Section -->
+		<section class="coming-soon">
+			<div class="container">
+				<h2>Coming Soon</h2>
+				<p>We're building the future of job matching. Be among the first to experience it.</p>
+				<div class="launch-info">
+					<div class="timeline">
+						<h4>Expected Launch: Q2 2025</h4>
+						<p>Early access program starts Q1 2025</p>
+					</div>
+					<div class="benefits">
+						<h4>Early Access Benefits:</h4>
+						<ul>
+							<li>Free premium features for first 6 months</li>
+							<li>Priority matching with top companies</li>
+							<li>Direct feedback line to our team</li>
+						</ul>
+					</div>
+				</div>
+				<div class="cta">
+					<input type="email" placeholder="Enter your email" />
+					<button type="submit">Join Waitlist</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<p>&copy; 2025 CV Guide. Building the future of hiring.</p>
+			<div class="contact">
+				<p>Questions? <a href="mailto:hello@cvguide.com">hello@cvguide.com</a></p>
+			</div>
+		</div>
+	</footer>
 </Layout>
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	/* Hero Section */
+	.hero {
+		background: linear-gradient(135deg, #1A237E 0%, #303F9F 100%);
+		color: white;
+		padding: 100px 0;
+		text-align: center;
+	}
+
+	.hero-content {
+		max-width: 600px;
+		margin: 0 auto 60px;
+	}
+
+	.badge {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.2);
+		padding: 8px 20px;
+		border-radius: 20px;
+		font-size: 14px;
+		margin-bottom: 20px;
+		backdrop-filter: blur(10px);
+	}
+
+	.hero h1 {
+		font-size: 3.5rem;
+		margin-bottom: 20px;
+		font-weight: 700;
+	}
+
+	.hero-description {
+		font-size: 1.2rem;
+		margin-bottom: 40px;
+		opacity: 0.9;
+	}
+
+	.email-signup {
+		display: flex;
+		max-width: 400px;
+		margin: 0 auto 15px;
+		background: white;
+		border-radius: 50px;
+		padding: 4px;
+	}
+
+	.email-signup input {
+		flex: 1;
+		border: none;
+		padding: 15px 20px;
+		border-radius: 50px;
+		font-size: 16px;
+		outline: none;
+		color: #333;
+	}
+
+	.email-signup button {
+		background: #00C4FF;
+		color: white;
+		border: none;
+		padding: 15px 30px;
+		border-radius: 50px;
+		font-weight: 600;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	.signup-note {
+		font-size: 14px;
+		opacity: 0.8;
+	}
+
+	.hero-image {
+		margin-top: 40px;
+	}
+
+	.image-placeholder {
+		background: rgba(255, 255, 255, 0.1);
+		border: 2px dashed rgba(255, 255, 255, 0.3);
+		border-radius: 10px;
+		padding: 60px 20px;
+		text-align: center;
+		color: rgba(255, 255, 255, 0.7);
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	/* Problem Section */
+	.problem {
+		padding: 80px 0;
+		background: #F5F6FA;
+	}
+
+	.problem h2 {
+		text-align: center;
+		font-size: 2.5rem;
+		margin-bottom: 60px;
+		color: #333;
+	}
+
+	.problem-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 40px;
+	}
+
+	.problem-item {
+		text-align: center;
+		padding: 30px;
+		background: white;
+		border-radius: 10px;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	}
+
+	.icon-placeholder {
+		font-size: 3rem;
+		margin-bottom: 20px;
+	}
+
+	.problem-item h3 {
+		font-size: 1.5rem;
+		margin-bottom: 15px;
+		color: #333;
+	}
+
+	/* Solution Section */
+	.solution {
+		padding: 80px 0;
+		text-align: center;
+	}
+
+	.solution h2 {
+		font-size: 2.5rem;
+		margin-bottom: 30px;
+		color: #333;
+	}
+
+	.solution-intro {
+		font-size: 1.2rem;
+		max-width: 800px;
+		margin: 0 auto 50px;
+		color: #666;
+	}
+
+	.solution-image {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	/* How It Works Section */
+	.how-it-works {
+		padding: 80px 0;
+		background: #F5F6FA;
+	}
+
+	.how-it-works h2 {
+		text-align: center;
+		font-size: 2.5rem;
+		margin-bottom: 60px;
+		color: #333;
+	}
+
+	.audience-tabs {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 60px;
+	}
+
+	.tab-content h3 {
+		font-size: 1.8rem;
+		margin-bottom: 30px;
+		color: #1A237E;
+		text-align: center;
+	}
+
+	.steps {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.step {
+		display: flex;
+		align-items: flex-start;
+		gap: 20px;
+	}
+
+	.step-number {
+		background: #7CB342;
+		color: white;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 600;
+		flex-shrink: 0;
+	}
+
+	.step-content h4 {
+		margin-bottom: 10px;
+		color: #333;
+	}
+
+	/* Coming Soon Section */
+	.coming-soon {
+		padding: 80px 0;
+		text-align: center;
+		background: linear-gradient(135deg, #1A237E 0%, #303F9F 100%);
+		color: white;
+	}
+
+	.coming-soon h2 {
+		font-size: 2.5rem;
+		margin-bottom: 20px;
+	}
+
+	.launch-info {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		max-width: 800px;
+		margin: 40px auto;
+		text-align: left;
+	}
+
+	.timeline, .benefits {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 30px;
+		border-radius: 10px;
+		backdrop-filter: blur(10px);
+	}
+
+	.benefits ul {
+		margin: 15px 0 0 0;
+		padding: 0 0 0 20px;
+	}
+
+	.cta {
+		display: flex;
+		max-width: 400px;
+		margin: 40px auto 0;
+		background: white;
+		border-radius: 50px;
+		padding: 4px;
+	}
+
+	.cta input {
+		flex: 1;
+		border: none;
+		padding: 15px 20px;
+		border-radius: 50px;
+		font-size: 16px;
+		outline: none;
+		color: #333;
+	}
+
+	.cta button {
+		background: #00C4FF;
+		color: white;
+		border: none;
+		padding: 15px 30px;
+		border-radius: 50px;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	/* Footer */
+	footer {
+		background: #1A237E;
+		color: white;
+		padding: 40px 0;
+		text-align: center;
+	}
+
+	footer .container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	footer a {
+		color: #00C4FF;
+		text-decoration: none;
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.hero h1 {
+			font-size: 2.5rem;
+		}
+
+		.audience-tabs {
+			grid-template-columns: 1fr;
+		}
+
+		.launch-info {
+			grid-template-columns: 1fr;
+		}
+
+		footer .container {
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.email-signup, .cta {
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.email-signup input, .cta input {
+			border-radius: 25px;
+		}
+
+		.email-signup button, .cta button {
+			border-radius: 25px;
+		}
+	}
+</style>
