@@ -20,12 +20,6 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 					<p class="signup-note">Join the waitlist to be first to experience the future of hiring</p>
 				</div>
-				<div class="hero-image">
-					<div class="image-placeholder">
-						<!-- Hero illustration placeholder -->
-						<p>Hero Image Placeholder<br/>AI + Job Matching Visual</p>
-					</div>
-				</div>
 			</div>
 		</section>
 
@@ -181,15 +175,23 @@ import Layout from '../layouts/Layout.astro';
 
 	/* Hero Section */
 	.hero {
-		background: linear-gradient(135deg, #1A237E 0%, #303F9F 100%);
+		background: 
+			linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(48, 63, 159, 0.4) 100%),
+			url('/hero-image.png');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 		color: white;
 		padding: 100px 0;
 		text-align: center;
+		position: relative;
 	}
 
 	.hero-content {
 		max-width: 600px;
-		margin: 0 auto 60px;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
 	}
 
 	.badge {
@@ -249,20 +251,6 @@ import Layout from '../layouts/Layout.astro';
 		opacity: 0.8;
 	}
 
-	.hero-image {
-		margin-top: 40px;
-	}
-
-	.image-placeholder {
-		background: rgba(255, 255, 255, 0.1);
-		border: 2px dashed rgba(255, 255, 255, 0.3);
-		border-radius: 10px;
-		padding: 60px 20px;
-		text-align: center;
-		color: rgba(255, 255, 255, 0.7);
-		max-width: 500px;
-		margin: 0 auto;
-	}
 
 	/* Problem Section */
 	.problem {
