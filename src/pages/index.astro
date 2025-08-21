@@ -26,10 +26,13 @@ import Layout from '../layouts/Layout.astro';
 						AI-powered job matching that goes beyond resumes and buzzword-filled job descriptions. 
 						Find roles that truly fit your complete professional story and personality.
 					</p>
-					<div class="email-signup">
-						<input type="email" placeholder="Enter your email for early access" />
-						<button type="submit">Get Early Access</button>
-					</div>
+					<form class="email-signup" action="https://thecvguide.us2.list-manage.com/subscribe/post?u=df52719895af8f1c6b5c186e0&id=787a31b318" method="post" id="mc-embedded-subscribe-form-hero" name="mc-embedded-subscribe-form">
+						<input type="email" name="EMAIL" placeholder="Enter your email for early access" required />
+						<button type="submit" name="subscribe">Get Early Access</button>
+						<div style="position: absolute; left: -5000px;" aria-hidden="true">
+							<input type="text" name="b_df52719895af8f1c6b5c186e0_787a31b318" tabindex="-1" value="">
+						</div>
+					</form>
 					<p class="signup-note">Join the waitlist to be first to experience the future of hiring</p>
 				</div>
 			</div>
@@ -155,10 +158,13 @@ import Layout from '../layouts/Layout.astro';
 						</ul>
 					</div>
 				</div>
-				<div class="cta">
-					<input type="email" placeholder="Enter your email" />
-					<button type="submit">Join Waitlist</button>
-				</div>
+				<form class="cta" action="https://thecvguide.us2.list-manage.com/subscribe/post?u=df52719895af8f1c6b5c186e0&id=787a31b318" method="post" id="mc-embedded-subscribe-form-cta" name="mc-embedded-subscribe-form">
+					<input type="email" name="EMAIL" placeholder="Enter your email" required />
+					<button type="submit" name="subscribe">Join Waitlist</button>
+					<div style="position: absolute; left: -5000px;" aria-hidden="true">
+						<input type="text" name="b_df52719895af8f1c6b5c186e0_787a31b318" tabindex="-1" value="">
+					</div>
+				</form>
 			</div>
 		</section>
 	</main>
@@ -604,6 +610,45 @@ import Layout from '../layouts/Layout.astro';
 		transform: translateY(0);
 	}
 
+	/* Mailchimp form messages */
+	.form-message {
+		margin-top: 15px;
+		padding: 12px 20px;
+		border-radius: 25px;
+		font-size: 14px;
+		font-weight: 600;
+		text-align: center;
+		animation: fadeInUp 0.3s ease-out;
+		width: 100%;
+		max-width: 400px;
+		box-sizing: border-box;
+	}
+
+	.email-signup .form-message,
+	.cta .form-message {
+		margin: 15px auto 0;
+		display: block;
+	}
+
+	.form-message.success {
+		background: rgba(124, 179, 66, 0.15);
+		color: #7CB342;
+		border: 2px solid rgba(124, 179, 66, 0.3);
+	}
+
+	.form-message.error {
+		background: rgba(255, 107, 107, 0.15);
+		color: #ff6b6b;
+		border: 2px solid rgba(255, 107, 107, 0.3);
+	}
+
+	/* Button loading state */
+	button:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+		transform: none !important;
+	}
+
 	/* Footer */
 	footer {
 		background: #1A237E;
@@ -686,6 +731,13 @@ import Layout from '../layouts/Layout.astro';
 			max-width: 100%;
 			background: transparent;
 			padding: 0;
+		}
+
+		.form-message {
+			margin: 10px auto 0;
+			max-width: 100%;
+			font-size: 13px;
+			padding: 10px 16px;
 		}
 
 		.email-signup input, .cta input {
@@ -929,4 +981,78 @@ import Layout from '../layouts/Layout.astro';
 	
 	// Check initial scroll position in case page loads scrolled
 	document.addEventListener('DOMContentLoaded', handleScroll);
+
+	// Mailchimp form handling
+	function handleMailchimpSubmit(form) {
+		const button = form.querySelector('button[type="submit"]');
+		const email = form.querySelector('input[name="EMAIL"]');
+		const originalButtonText = button.textContent;
+
+		// Validate email
+		if (!email.value || !email.validity.valid) {
+			showMessage(form, 'Please enter a valid email address', 'error');
+			return false;
+		}
+
+		// Show loading state
+		button.textContent = 'Joining...';
+		button.disabled = true;
+
+		// Submit to Mailchimp via hidden iframe to avoid redirect
+		const iframe = document.createElement('iframe');
+		iframe.style.display = 'none';
+		iframe.name = 'mc-iframe-' + Date.now();
+		document.body.appendChild(iframe);
+
+		form.target = iframe.name;
+		form.submit();
+
+		// Reset button after delay
+		setTimeout(() => {
+			button.textContent = originalButtonText;
+			button.disabled = false;
+			showMessage(form, 'Thanks for joining! Check your email to confirm.', 'success');
+			email.value = '';
+		}, 2000);
+
+		return false;
+	}
+
+	function showMessage(form, message, type) {
+		// Remove existing messages
+		const existingMessage = form.querySelector('.form-message');
+		if (existingMessage) existingMessage.remove();
+
+		// Create new message
+		const messageDiv = document.createElement('div');
+		messageDiv.className = `form-message ${type}`;
+		messageDiv.textContent = message;
+		messageDiv.style.opacity = '0';
+		form.appendChild(messageDiv);
+
+		// Animate in
+		setTimeout(() => {
+			messageDiv.style.transition = 'opacity 0.3s ease-out';
+			messageDiv.style.opacity = '1';
+		}, 50);
+
+		// Remove message after 5 seconds
+		setTimeout(() => {
+			if (messageDiv.parentNode) {
+				messageDiv.style.opacity = '0';
+				setTimeout(() => messageDiv.remove(), 300);
+			}
+		}, 5000);
+	}
+
+	// Add form listeners when page loads
+	document.addEventListener('DOMContentLoaded', () => {
+		const forms = document.querySelectorAll('form[id^="mc-embedded-subscribe-form"]');
+		forms.forEach(form => {
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				handleMailchimpSubmit(form);
+			});
+		});
+	});
 </script>
