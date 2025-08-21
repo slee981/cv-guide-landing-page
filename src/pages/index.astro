@@ -610,37 +610,6 @@ import Layout from '../layouts/Layout.astro';
 		transform: translateY(0);
 	}
 
-	/* Mailchimp form messages */
-	.form-message {
-		margin-top: 15px;
-		padding: 12px 20px;
-		border-radius: 25px;
-		font-size: 14px;
-		font-weight: 600;
-		text-align: center;
-		animation: fadeInUp 0.3s ease-out;
-		width: 100%;
-		max-width: 400px;
-		box-sizing: border-box;
-	}
-
-	.email-signup .form-message,
-	.cta .form-message {
-		margin: 15px auto 0;
-		display: block;
-	}
-
-	.form-message.success {
-		background: rgba(124, 179, 66, 0.15);
-		color: #7CB342;
-		border: 2px solid rgba(124, 179, 66, 0.3);
-	}
-
-	.form-message.error {
-		background: rgba(255, 107, 107, 0.15);
-		color: #ff6b6b;
-		border: 2px solid rgba(255, 107, 107, 0.3);
-	}
 
 	/* Button loading state */
 	button:disabled {
@@ -733,12 +702,6 @@ import Layout from '../layouts/Layout.astro';
 			padding: 0;
 		}
 
-		.form-message {
-			margin: 10px auto 0;
-			max-width: 100%;
-			font-size: 13px;
-			padding: 10px 16px;
-		}
 
 		.email-signup input, .cta input {
 			border-radius: 25px;
@@ -990,7 +953,12 @@ import Layout from '../layouts/Layout.astro';
 
 		// Validate email
 		if (!email.value || !email.validity.valid) {
-			showMessage(form, 'Please enter a valid email address', 'error');
+			button.textContent = 'Invalid Email';
+			button.style.background = '#ff6b6b';
+			setTimeout(() => {
+				button.textContent = originalButtonText;
+				button.style.background = '';
+			}, 2000);
 			return false;
 		}
 
@@ -1007,43 +975,23 @@ import Layout from '../layouts/Layout.astro';
 		form.target = iframe.name;
 		form.submit();
 
-		// Reset button after delay
+		// Show success on button, then reset
+		setTimeout(() => {
+			button.textContent = 'Joined!';
+			button.style.background = '#7CB342';
+		}, 1000);
+
+		// Reset button after showing success
 		setTimeout(() => {
 			button.textContent = originalButtonText;
+			button.style.background = '';
 			button.disabled = false;
-			showMessage(form, 'Thanks for joining! Check your email to confirm.', 'success');
 			email.value = '';
-		}, 2000);
+		}, 3000);
 
 		return false;
 	}
 
-	function showMessage(form, message, type) {
-		// Remove existing messages
-		const existingMessage = form.querySelector('.form-message');
-		if (existingMessage) existingMessage.remove();
-
-		// Create new message
-		const messageDiv = document.createElement('div');
-		messageDiv.className = `form-message ${type}`;
-		messageDiv.textContent = message;
-		messageDiv.style.opacity = '0';
-		form.appendChild(messageDiv);
-
-		// Animate in
-		setTimeout(() => {
-			messageDiv.style.transition = 'opacity 0.3s ease-out';
-			messageDiv.style.opacity = '1';
-		}, 50);
-
-		// Remove message after 5 seconds
-		setTimeout(() => {
-			if (messageDiv.parentNode) {
-				messageDiv.style.opacity = '0';
-				setTimeout(() => messageDiv.remove(), 300);
-			}
-		}, 5000);
-	}
 
 	// Add form listeners when page loads
 	document.addEventListener('DOMContentLoaded', () => {
